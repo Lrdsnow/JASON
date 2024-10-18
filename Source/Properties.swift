@@ -23,7 +23,9 @@
 //
 
 import Foundation
+#if !os(Linux)
 import CoreGraphics
+#endif
 
 // MARK: - JSON
 
@@ -69,7 +71,7 @@ extension JSON {
     public var nsNumberValue: NSNumber { return nsNumber ?? 0 }
 
     /// The value as a CGFloat or nil if not present/convertible
-    public var cgFloat: CGFloat? { return nsNumber != nil ? CGFloat(truncating: nsNumber!) : nil }
+    public var cgFloat: CGFloat? { return nsNumber != nil ? CGFloat(Int(nsNumber!)) : nil }
     /// The value as a CGFloat or 0.0 if not present/convertible
     public var cgFloatValue: CGFloat { return cgFloat ?? 0 }
 }

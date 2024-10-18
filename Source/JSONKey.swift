@@ -23,7 +23,9 @@
 //
 
 import Foundation
+#if !os(Linux)
 import CoreGraphics
+#endif
 
 // MARK: - JSONKey
 
